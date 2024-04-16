@@ -1,0 +1,22 @@
+.contenedorListContainer {
+  margin-top: 10px;
+  text-align: center;
+  background-color: rgb(255, 130, 0);
+  color: white;
+}
+
+.textoAnimado {
+  animation: aparecer-desaparecer 2s infinite alternate;
+}
+
+@keyframes aparecer-desaparecer {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

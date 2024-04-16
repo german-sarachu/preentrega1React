@@ -1,0 +1,12 @@
+.categoryList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 25px;
+    margin-right: 20px;
+}
+
+.categoryList a {
+    text-decoration: none;
+    color: white;
+}
