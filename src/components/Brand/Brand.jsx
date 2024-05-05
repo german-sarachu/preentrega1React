@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import "./Brand.css";
 
 function Brand() {
   return (
-    <div className="brand">
-      <img src="./src/assets/brand.jpg" alt="logo panaderia" />
-    </div>
+    <Link className="brand" to="/">
+      <img src="./src/assets/brand.jpg" alt="La Nueva Espiga" />
+    </Link>
   );
 }
 
