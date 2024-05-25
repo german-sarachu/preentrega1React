@@ -9,36 +9,28 @@ function CategoryList() {
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
             to="/panificados"
-          >
-            Panificados
-          </NavLink>
+          >Panificados</NavLink>
           {/*<a href="/#">Panificados</a> panes,bizcochos,envasados,sandwiches*/}
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
             to="/dulces"
-          >
-            Dulces
-          </NavLink>
+          >Dulces</NavLink>
           {/*<a href="/#">Dulces</a> tortasypostres,dulcesniños,masasfinas,budines,masdulces*/}
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
             to="/ocasiones"
-          >
-            Ocasiones
-          </NavLink>
+          >Ocasiones</NavLink>
           {/*<a href="/#">Ocasiones</a> desyunos,partybox,eventos*/}
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
             to="/finDeAnio"
-          >
-            Fin de Año
-          </NavLink>
+          >Fin de Año</NavLink>
           {/*<a href="/#">Fin de Año</a> nochebuena,findeaño,reservas*/}
         </li>
       </ul>

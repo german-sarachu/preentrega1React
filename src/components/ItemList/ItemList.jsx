@@ -3,15 +3,13 @@ import "./Item.css";
 
 export default function ItemList({ products }) {
   return (
-    <div style={listContainerStyle} className="item--list__container">
+    <div style={listContainerStyle}>
       {products.map((product) => (
         <Item key={product.id} item={product} />
       ))}
     </div>
   );
 }
-
-import React from "react";
 
 const listContainerStyle = {
   display: "flex",

@@ -9,7 +9,7 @@ export default function useProduct(id) {
     getProductsById(id)
       .then((data) => setProduct(data))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [id]);
 
   return { product, isLoading };
 }

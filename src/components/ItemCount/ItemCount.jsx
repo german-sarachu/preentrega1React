@@ -7,7 +7,7 @@ export default function ItemCount({ stock, count, increment, decrement }) {
         <button
           className="item--count-button"
           onClick={decrement}
-          disabled={count < 1}
+          disabled={count <= 0}
         >
           -
         </button>

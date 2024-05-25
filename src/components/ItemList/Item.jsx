@@ -1,9 +1,13 @@
 import useCount from "../../hooks/useCount";
 import ItemCount from "../ItemCount/ItemCount";
+import { useParams } from "react-router-dom";
+import useProduct from "../../hooks/useProduct";
 import "./Item.css";
 
 export default function Item({ item }) {
   const { count, increment, decrement } = useCount(0);
+  const { productId } = useParams();
+  const { product, isLoading} = useProduct(4);
 
   const onAdd = (nombreDeItem, cantidadALlevar) => {
     console.log("nombre del item: ", nombreDeItem);
@@ -22,6 +26,8 @@ export default function Item({ item }) {
       <h2 className="item--title">{item.title}</h2>
       <p className="item--description">{item.description}</p>
       <p className="item--price">${item.price}</p>
+
+      <h4>parametro {productId} </h4>
 
       <div className="item--counter__container">
         <ItemCount
