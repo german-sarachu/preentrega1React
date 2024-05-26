@@ -1,50 +1,17 @@
-import useCount from "../../hooks/useCount";
-import ItemCount from "../ItemCount/ItemCount";
-import { useParams } from "react-router-dom";
-import useProduct from "../../hooks/useProduct";
+import { Link } from "react-router-dom";
 import "./Item.css";
 
 export default function Item({ item }) {
-  const { count, increment, decrement } = useCount(0);
-  const { productId } = useParams();
-  const { product, isLoading} = useProduct();
-
-  const onAdd = (nombreDeItem, cantidadALlevar) => {
-    console.log("nombre del item: ", nombreDeItem);
-    console.log("cantidad a llevar: ", cantidadALlevar);
-  };
-
   return (
     <div className="item__container">
       <div className="item--img__container">
-        <img
-          className="item--img"
-          src={item.img}
-          alt={item.title}
-        />
+        <img className="item--img" src={item.img} alt={item.title} />
       </div>
-      <h2 className="item--title">{item.title}</h2>
+      <Link to={`/product/${item.id}`}>
+        <h2 className="item--title">{item.title}</h2>
+      </Link>
       <p className="item--description">{item.description}</p>
       <p className="item--price">${item.price}</p>
-
-      <h4>parametro {productId} </h4>
-
-      <div className="item--counter__container">
-        <ItemCount
-          count={count}
-          increment={increment}
-          decrement={decrement}
-          stock={item.stock}
-        />
-      </div>
-      <div className="item--cart__container">
-        <button
-          className="item--cart__button"
-          onClick={() => onAdd(item, count)}
-        >
-          Add to cart
-        </button>
-      </div>
     </div>
   );
 }

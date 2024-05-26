@@ -1,18 +1,6 @@
-.cartContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  margin: 10px;
-  width: 52px;
-  height: 52px;
-  background-color: rgb(255, 130, 0);
-  border-radius: 50px;
-  box-shadow: -2px -2px 5px black;
-}
-
-.cartContainer span {
-    color: white;
-    text-shadow: 2px 2px 4px black;
-
+.cart--container > span{
+  color: white;
+  padding: 5px;
+  background-color: tomato;
+   border-radius: 50%;
 }

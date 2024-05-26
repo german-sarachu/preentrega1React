@@ -109,10 +109,10 @@ export const getProducts = () => {
   });
 };
 
-export const getProductsById = (id) => {
+export const getProductById = (id) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(products.find((product) => product.id === id));
+      resolve(products.find((product) => product.id == id));
     }, 1500);
   });
 };

@@ -4,7 +4,7 @@ import "./Brand.css";
 function Brand() {
   return (
     <Link className="brand" to="/">
-      <img src="./src/assets/brand.jpg" alt="La Nueva Espiga" />
+      <img src="../../src/assets/brand.jpg" alt="La Nueva Espiga" />
     </Link>
   );
 }

@@ -1,19 +1,31 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import CartProvider from "./contexts/CartProvider";
+import CartContainer from "./components/CartContainer/CartContainer";
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route exact path="/" element={<ItemListContainer />} />
-          <Route exact path="/category/:category" element={<ItemListContainer />} />
-          <Route exact path="/product/:productId" element={<ItemListContainer />} />
-          <Route exact path="*" element={<h3>La pagina no se encuentra</h3>} />
-        </Routes>
-      </Layout>
+      <CartProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route
+              path="/category/:categoryName"
+              element={<ItemListContainer />}
+            />
+            <Route
+              path="/product/:productId"
+              element={<ItemDetailContainer />}
+            />
+            <Route path="/cart" element={<CartContainer />} />
+            <Route path="/checkout" element={<h1>Proximamente...</h1>} />
+          </Routes>
+        </Layout>
+      </CartProvider>
     </BrowserRouter>
   );
 }

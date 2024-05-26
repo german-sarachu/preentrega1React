@@ -1,15 +1,18 @@
-import CategoryList from "../CategoryList/CategoryList";
+import { useContext } from "react";
 import CartWidget from "../CartWidget/CartWidget";
+import CategoryList from "../CategoryList/CategoryList";
 import "./NavBar.css";
-import "../CartWidget/CartWidget.css";
+import CartContext from "../../contexts/CartContext";
 
-function NavBar() {
+export default function NavBar() {
+  const { cart } = useContext(CartContext);
+
   return (
-    <div className="navBarWrapper">
+    <div className="flex items-center">
       <CategoryList />
-      <CartWidget />
+      <div className={`${cart.length === 0 ? "hidden" : ""}`}>
+        <CartWidget />
+      </div>
     </div>
   );
 }
-
-export default NavBar;

@@ -1,38 +1,20 @@
-import "./ItemListContainer.css";
 import ItemList from "../ItemList/ItemList";
 import useProducts from "../../hooks/useProducts";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-export default function ItemListContainer({ saludo }) {
-  const { isLoading, products } = useProducts();
-  const [productFilter, setProductFilter] = useState([]);
+function ItemListContainer({ saludo }) {
+  const { categoryName } = useParams();
 
-  const { category } = useParams();
+  const { isLoading, products } = useProducts(categoryName);
 
-  useEffect(() => {
-    if (products) {
-      const newArray = [];
-      
-      if (category != null) {
-        products.map((product) => {
-          if (product.category === category) {
-            newArray.push(product);
-          }
-        });
-        setProductFilter(newArray);
-      } else {
-        setProductFilter(products);
-      }
-    }
-  }, [category, products]);
-
-  if (isLoading) return <h2>...Cargando</h2>;
+  if (isLoading) return <h1>Cargando...</h1>;
 
   return (
     <div>
-      <h1 className="contenedorListContainer textoAnimado">{saludo}</h1>
-      <ItemList products={category ? productFilter : products} />
+      <h1>{saludo}</h1>
+      <ItemList products={products} />
     </div>
   );
 }
+
+export default ItemListContainer;
