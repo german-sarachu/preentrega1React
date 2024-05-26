@@ -8,30 +8,30 @@ function CategoryList() {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
-            to="/panificados"
+            to="category/panificados"
           >Panificados</NavLink>
-          {/*<a href="/#">Panificados</a> panes,bizcochos,envasados,sandwiches*/}
+          {/*panes,bizcochos,envasados,sandwiches*/}
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
-            to="/dulces"
+            to="category/dulces"
           >Dulces</NavLink>
-          {/*<a href="/#">Dulces</a> tortasypostres,dulcesniños,masasfinas,budines,masdulces*/}
+          {/*tortasypostres,dulcesniños,masasfinas,budines,masdulces*/}
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
-            to="/ocasiones"
+            to="category/ocasiones"
           >Ocasiones</NavLink>
-          {/*<a href="/#">Ocasiones</a> desyunos,partybox,eventos*/}
+          {/*desyunos,partybox,eventos*/}
         </li>
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "activeLink" : "")}
-            to="/finDeAnio"
+            to="category/finDeAnio"
           >Fin de Año</NavLink>
-          {/*<a href="/#">Fin de Año</a> nochebuena,findeaño,reservas*/}
+          {/*nochebuena,findeaño,reservas*/}
         </li>
       </ul>
     </nav>

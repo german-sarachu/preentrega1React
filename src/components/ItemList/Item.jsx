@@ -7,7 +7,7 @@ import "./Item.css";
 export default function Item({ item }) {
   const { count, increment, decrement } = useCount(0);
   const { productId } = useParams();
-  const { product, isLoading} = useProduct(4);
+  const { product, isLoading} = useProduct();
 
   const onAdd = (nombreDeItem, cantidadALlevar) => {
     console.log("nombre del item: ", nombreDeItem);
