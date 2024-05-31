@@ -1,9 +1,18 @@
 import { useContext } from "react";
 import CartContext from "../../contexts/CartContext";
 import CartItem from "../CartItem/CartItem";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function CartContainer() {
-  const { cart, clearCart, cartTotal } = useContext(CartContext);
+  const { cart, clearCart, cartTotal, generateOrder } = useContext(CartContext);
+
+  const [order, setOrder] = useState();
+
+  const handleGenerateOrder = async () => {
+    const result = await generateOrder();
+    setOrder(result);
+  };
 
   return (
     <div className="pt-3">
@@ -24,6 +33,32 @@ export default function CartContainer() {
       >
         Limpiar carrito
       </button>
+      <button onClick={() => handleGenerateOrder()}>Generar orden</button>
+
+      {order && (
+        <div>
+          <header>
+            <h4>order id: {order.id}</h4>
+          </header>
+          <section>
+            {order.cart.map((item) => (
+              <article key={item.product.id}>
+                <header>
+                  <img
+                    src={item.product.imageUrl}
+                    alt={item.product.title}
+                    height={100}
+                  />
+                  <h5>{item.product.title}</h5>
+                </header>
+                <footer>
+                  <p>total: ${item.product.price * item.quantity}</p>
+                </footer>
+              </article>
+            ))}
+          </section>
+        </div>
+      )}
     </div>
   );
 }

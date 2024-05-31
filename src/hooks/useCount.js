@@ -4,7 +4,7 @@ export default function useCount(initialValue = 0) {
   const [count, setCount] = useState(initialValue);
 
   const increment = () => {
-    setCount((estadoAnterior) => estadoAnterior + 1);
+    setCount(count + 1);
   };
 
   const decrement = () => {

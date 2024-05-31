@@ -12,9 +12,11 @@ function CartWidget() {
     <Link to={"/cart"}>
       <div className="flex items-center">
         <CartIcon width={40} height={40} />
-        <span className="rounded-full px-1 text-white bg-amber-400 font-semibold text-sm">
-          {calculateQuantity}
-        </span>
+        {cart.length > 0 && (
+          <span className="rounded-full px-1 text-white bg-amber-400 font-semibold text-sm">
+            {calculateQuantity}
+          </span>
+        )}
       </div>
     </Link>
   );

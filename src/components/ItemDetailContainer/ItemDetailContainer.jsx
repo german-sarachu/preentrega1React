@@ -1,24 +1,25 @@
 import { useParams } from "react-router-dom";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import useProductById from "../../hooks/useProductById";
+import useProduct from "../../hooks/useProduct";
 import "./ItemDetailContainer.css";
+import { useEffect } from "react";
 
 export default function ItemDetailContainer() {
-  const params = useParams();
-  const { productId } = params;
-  const { loading, product } = useProductById(productId);
+  const { productId } = useParams();
+  const { isLoading, product, getProduct } = useProduct();
 
-  if (loading) {
+  useEffect(() => {
+    getProduct(productId);
+  }, [productId]);
+
+  if (isLoading) {
     return <h2>Cargando...</h2>;
-  }
-
-  if (!product) {
-    return <h2>Producto no encontrado</h2>;
   }
 
   return (
     <div className="item--detail__container">
-      <ItemDetail item={product} />
+      {!product && <h2>Producto no encontrado</h2>}
+      {product && <ItemDetail item={product} />}
     </div>
   );
 }

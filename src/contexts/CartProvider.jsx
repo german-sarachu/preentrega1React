@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import CartContext from "./CartContext";
+import { db } from "../api/firebaseConfig";
+import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function CartProvider({ children }) {
   const [cart, setCart] = useState(
@@ -52,9 +54,39 @@ export default function CartProvider({ children }) {
     }, 0)
     .toFixed(2);
 
+  const updateStock = (order) => {
+    order.cart.map((item) => {
+      updateDoc(doc(db, "products", item.product.id), {
+        stock: item.product.stock - item.quantity,
+        ...item,
+      });
+    });
+  };
+
+  const generateOrder = async () => {
+    const date = new Date();
+    const refId = await addDoc(collection(db, "orders"), {
+      cart: [...cart],
+      total: cartTotal,
+      date: date,
+    });
+    const order = await getDoc(doc(db, "orders", refId.id));
+    updateStock(order.data());
+    console.log(refId.id);
+    clearCart();
+    return { id: refId.id, ...order.data() };
+  };
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, cartTotal }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        cartTotal,
+        generateOrder,
+      }}
     >
       {children}
     </CartContext.Provider>
