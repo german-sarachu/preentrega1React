@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState, useEffect } from "react";
 import Layout from "./components/Layout/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
@@ -30,4 +29,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default App;
