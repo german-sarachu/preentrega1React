@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import useProducts from "../../hooks/useProducts";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
 
 function ItemListContainer({ saludo }) {
   const { categoryName } = useParams();
