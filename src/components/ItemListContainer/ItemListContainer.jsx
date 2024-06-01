@@ -6,14 +6,14 @@ import { useState } from "react";
 
 function ItemListContainer({ saludo }) {
   const { categoryName } = useParams();
-  const { isLoading, products } = useProducts(categoryName);
+  const { isLoading, products } = useProducts();
   const [productsFilters, setProductsFilters] = useState([]);
 
   useEffect(() => {
-    if (categoryName) {
+    if (categoryName && products) {
       setProductsFilters(products.filter((el) => el.category == categoryName));
     }
-  }, [categoryName]);
+  }, [categoryName, products]);
 
   if (isLoading) return <h1>Cargando...</h1>;
 

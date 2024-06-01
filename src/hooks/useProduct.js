@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getProductById } from "../mocks/asyncMock";
+import { useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../api/firebaseConfig";
 
@@ -9,7 +8,7 @@ export default function useProduct() {
 
   const getProduct = async (id) => {
     const result = await getDoc(doc(db, "products", id));
-    setProduct(result.data());
+    setProduct({id: result.id, ...result.data()});
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);

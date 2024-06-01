@@ -6,7 +6,7 @@ export default function CartItem({ item }) {
 
   return (
     <div
-      key={item}
+      key={item.product.id}
       className="
                flex items-center justify-between
               "

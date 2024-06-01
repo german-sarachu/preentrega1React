@@ -10,7 +10,6 @@ export default function ItemDetail({ item }) {
 
   const handleAddToCart = () => {
     addToCart(item, count);
-    reset();
   };
   // cantidad de prodcuts en el carrito
 

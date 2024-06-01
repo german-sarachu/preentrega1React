@@ -9,11 +9,11 @@ export default function CartProvider({ children }) {
   );
 
   const addToCart = (product, quantity) => {
-    const itemInCart = cart.find((item) => item.product.id === product.id);
+    const itemInCart = cart.find((item) => item.product.id == product.id);
 
     if (itemInCart) {
       const updatedCart = cart.map((item) => {
-        if (item.product.id === product.id) {
+        if (item.product.id == product.id) {
           return { product, quantity: item.quantity + quantity };
         }
         return item;
@@ -55,6 +55,7 @@ export default function CartProvider({ children }) {
     .toFixed(2);
 
   const updateStock = (order) => {
+    order.cart.map((item) => console.log(item.product));
     order.cart.map((item) => {
       updateDoc(doc(db, "products", item.product.id), {
         stock: item.product.stock - item.quantity,
@@ -63,16 +64,22 @@ export default function CartProvider({ children }) {
     });
   };
 
-  const generateOrder = async () => {
+  const generateOrder = async ({ cart, cartTotal, userInfo }) => {
     const date = new Date();
     const refId = await addDoc(collection(db, "orders"), {
+      user: userInfo,
       cart: [...cart],
       total: cartTotal,
       date: date,
     });
-    const order = await getDoc(doc(db, "orders", refId.id));
-    updateStock(order.data());
+
     console.log(refId.id);
+
+    const order = await getDoc(doc(db, "orders", refId.id));
+
+    const data = order.data();
+
+    updateStock(data);
     clearCart();
     return { id: refId.id, ...order.data() };
   };
